@@ -4,6 +4,11 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+// ✅ Test Route
+router.get("/test", (req, res) => {
+  res.send("Auth route is working ✅");
+});
+
 // Register
 router.post("/register", async (req, res) => {
   const { name, email, password } = req.body;
@@ -12,7 +17,6 @@ router.post("/register", async (req, res) => {
     const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
     res.status(201).json({ message: "User registered successfully" });
-
   } catch (err) {
     res.status(400).json("User already exists or error occurred");
   }
