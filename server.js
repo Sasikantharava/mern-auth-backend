@@ -9,10 +9,14 @@ const app = express();
 
 // Allow frontend origin (Vercel) for CORS
 app.use(cors({
-  origin: ["https://mern-auth-frontend-swart.vercel.app"], // your frontend URL
+  origin: [
+    "http://localhost:3000", // for local development
+    "https://mern-auth-frontend-swart.vercel.app" // for production (Vercel)
+  ],
   methods: ["GET", "POST"],
   credentials: true
 }));
+
 
 app.use(express.json());
 
