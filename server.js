@@ -8,14 +8,16 @@ dotenv.config();
 const app = express();
 
 // Allow frontend origin (Vercel) for CORS
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://mern-auth-frontend.vercel.app",
+  "https://mern-auth-frontend-b79zosztg-sasikantharavas-projects.vercel.app"
+];
+
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://mern-auth-frontend.vercel.app", // your real deployed domain
-    "https://mern-auth-frontend-mmam85ch7-sasikantharavas-projects.vercel.app" // Vercel preview link
-  ],
-  methods: ["GET", "POST"],
-  credentials: true
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
 }));
 
 
